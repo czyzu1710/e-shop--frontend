@@ -1,0 +1,14 @@
+.product-page-main-container {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  flex: 0 1 auto;
+}
+
+.product-page-sub-container {
+  margin-top: 20px;
+  display: flex;
+  width: 80%;
+  justify-content: space-around;
+  flex: 0 1 auto;
+}

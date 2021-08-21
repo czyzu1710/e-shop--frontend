@@ -1,0 +1,38 @@
+.error-wrapper {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  flex-direction: row;
+  /*background: url(../../images/food-error.jpg) no-repeat center center fixed;*/
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.un-error {
+  /*background: url(../../images/un-error.jpg) no-repeat center center fixed;*/
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.error-wrapper-center {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  color: #fff;
+  font-size: 40px;
+  padding-top: 10%;
+}
+
+.error-link {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 700;
+}
+
+.error-link:hover {
+  color: #0095a7;
+}

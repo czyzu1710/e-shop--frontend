@@ -1,0 +1,57 @@
+.order {
+  height: auto;
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+  width: 100%;
+}
+
+.order-container {
+  padding-top: 25px;
+  width: 70%;
+  display: grid;
+  grid-template-columns: auto 400px;
+  box-shadow: 0px 14px 80px rgba(69, 69, 69, 0.3);
+  border-radius: 15px;
+}
+
+.order-info {
+  padding-left: 40px;
+}
+
+#sticky-el {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 20px;
+  padding-right: 20px;
+}
+
+.order-pay-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.order-pay-info-price {
+  text-align: right;
+  padding-right: 20px;
+}
+
+.main-price {
+  position: static;
+  display: flex;
+  flex-direction: row-reverse;
+  padding-right: 20px;
+}
+
+.order-input {
+  width: 35vw;
+}
+
+.order-list {
+  width: 35vw;
+}
+
+.order-list > * {
+  background-color: rgba(230, 230, 230, 0.3);
+  border-radius: 10px;
+}

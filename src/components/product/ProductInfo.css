@@ -1,0 +1,7 @@
+.product-info-main-container {
+  display: flex;
+  flex-direction: column;
+  width: 20vw;
+  height: 60%;
+  justify-content: center;
+}

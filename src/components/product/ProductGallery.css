@@ -1,0 +1,24 @@
+.product-gallery-main-container {
+  display: flex;
+  gap: 10px;
+  height: fit-content;
+}
+
+.product-gallery-thumbnail-container {
+  display: flex;
+  height: 680px;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.product-gallery-dialog-main-container {
+  display: flex;
+  justify-content: center;
+}
+
+.product-gallery-dialog-icon {
+  position: absolute !important;
+  top: 5%;
+  right: 5%;
+}

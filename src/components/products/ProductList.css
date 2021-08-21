@@ -1,0 +1,25 @@
+.product-list-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+.product-list-grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 20vw);
+  justify-items: center;
+  align-items: flex-start;
+  width: 80vw;
+  row-gap: 5vh;
+  height: 90vh;
+  padding-top: 4vh;
+}
+
+.product-list-pagination-container {
+  display: flex;
+  flex-direction: row-reverse;
+  padding-top: 10px;
+  padding-right: 25px;
+}

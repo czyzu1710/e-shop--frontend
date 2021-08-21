@@ -1,0 +1,10 @@
+.cart-summary-main-container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  height: 35vh;
+  justify-content: space-between;
+  gap: 30px;
+  position: sticky;
+  top: 1rem;
+}

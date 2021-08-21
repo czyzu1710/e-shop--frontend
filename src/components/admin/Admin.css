@@ -1,0 +1,20 @@
+.admin {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+}
+
+.admin-container {
+  padding-top: 15px;
+  width: 75vw;
+  box-shadow: 0px 14px 80px rgba(69, 69, 69, 0.3);
+  border-radius: 15px;
+  display: grid;
+  grid-template-rows: 1fr auto 1fr;
+}
+
+.center-component {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
