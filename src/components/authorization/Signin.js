@@ -15,10 +15,10 @@ import {
 } from "@material-ui/core";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
-import { useContext, useState } from "react";
+import {useContext, useState} from "react";
 import AuthService from "../../services/auth";
-import { useHistory } from "react-router-dom";
-import { LogInProviderContext } from "../../state/LogInProvider";
+import {useHistory} from "react-router-dom";
+import {LogInProviderContext} from "../../state/LogInProvider";
 
 export default function Signin() {
   // eslint-disable-next-line
@@ -35,7 +35,7 @@ export default function Signin() {
   });
 
   const handleChange = (prop) => (event) => {
-    setState({ ...state, [prop]: event.target.value });
+    setState({...state, [prop]: event.target.value});
     switch (prop) {
       case "email": {
         emailValidator(event.target.value);
@@ -57,7 +57,7 @@ export default function Signin() {
   };
 
   const handleClickShowPassword = () => {
-    setState({ ...state, showPassword: !state.showPassword });
+    setState({...state, showPassword: !state.showPassword});
   };
 
   const handleLogin = (e) => {
@@ -68,31 +68,31 @@ export default function Signin() {
     });
 
     AuthService.signIn(state.email, state.password).then(
-      () => {
-        history.push("/");
-        setLog(true);
-      },
-      (error) => {
-        const resMessage =
-          (error.response &&
-            error.response.data &&
-            error.response.data.message) ||
-          error.message ||
-          error.toString();
+        () => {
+          history.push("/");
+          setLog(true);
+        },
+        (error) => {
+          const resMessage =
+              (error.response &&
+                  error.response.data &&
+                  error.response.data.message) ||
+              error.message ||
+              error.toString();
 
-        if (Boolean(resMessage)) {
-          setState({
-            ...state,
-            message: "Błędne dane",
-          });
+          if (Boolean(resMessage)) {
+            setState({
+              ...state,
+              message: "Błędne dane",
+            });
+          }
         }
-      }
     );
   };
 
   const emailValidator = (email) => {
     const regexp =
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     setErrors({
       ...errors,
       errorEmail: "",
@@ -125,88 +125,96 @@ export default function Signin() {
   };
 
   return (
-    <div className="outer">
-      <div className="inner">
-        <Form onSubmit={handleLogin}>
-          <Grid container direction="column" alignItems="center">
-            <Typography variant="h4" className="first-input">
-              Zaloguj się
-            </Typography>
-            <TextField
-              error={Boolean(errors?.errorEmail)}
-              helperText={errors?.errorEmail}
-              className="first-input"
-              type="text"
-              label="Email"
-              placeholder="Email"
-              margin="normal"
-              variant="filled"
-              name="email"
-              onChange={handleChange("email")}
-              value={state.email}
-              fullWidth
-            />
-            <FormControl
-              variant="filled"
-              margin="normal"
-              size="medium"
-              fullWidth
-            >
-              <InputLabel
-                htmlFor="standard-adornment-password"
-                error={Boolean(errors?.errorPassword)}
-              >
-                Password
-              </InputLabel>
-              <FilledInput
-                id="password"
-                type={state.showPassword ? "text" : "password"}
-                placeholder="Password"
-                value={state.password}
-                name="password"
-                onChange={handleChange("password")}
-                endAdornment={
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword}
-                      onMouseDown={handleMouseDownPassword}
-                    >
-                      {state.showPassword ? <Visibility /> : <VisibilityOff />}
-                    </IconButton>
-                  </InputAdornment>
-                }
-                error={Boolean(errors?.errorPassword)}
+      <div className="outer">
+        <div className="inner">
+          <Form onSubmit={handleLogin}>
+            <Grid container direction="column" alignItems="center">
+              <Typography variant="h4" className="first-input">
+                Zaloguj się
+              </Typography>
+              <TextField
+                  error={Boolean(errors?.errorEmail)}
+                  helperText={errors?.errorEmail}
+                  className="first-input"
+                  type="text"
+                  label="Email"
+                  placeholder="Email"
+                  margin="normal"
+                  variant="filled"
+                  name="email"
+                  onChange={handleChange("email")}
+                  value={state.email}
+                  fullWidth
               />
-              <FormHelperText
-                style={{ color: errors?.errorPassword !== "" ? "red" : "gray" }}
-                id="component-error-text"
+              <FormControl
+                  variant="filled"
+                  margin="normal"
+                  size="medium"
+                  fullWidth
               >
-                {errors?.errorPassword}
-              </FormHelperText>
-            </FormControl>
-            <Box style={{ minHeight: "4vh" }} margin="normal">
-              {state.message && (
-                <div className="wrong-input">{state.message}</div>
-              )}
-            </Box>
-            <Button
-              variant="contained"
-              type="submit"
-              color="primary"
-              size="large"
-              style={{ minHeight: "50px" }}
-              disabled={Boolean(errors?.errorEmail || errors?.errorPassword)}
-              fullWidth
-            >
-              <span className="btn-login-txt">Zaloguj się</span>
-            </Button>
-          </Grid>
-        </Form>
+                <InputLabel
+                    htmlFor="standard-adornment-password"
+                    error={Boolean(errors?.errorPassword)}
+                >
+                  Password
+                </InputLabel>
+                <FilledInput
+                    id="password"
+                    type={state.showPassword ? "text" : "password"}
+                    placeholder="Password"
+                    value={state.password}
+                    name="password"
+                    onChange={handleChange("password")}
+                    endAdornment={
+                      <InputAdornment position="end">
+                        <IconButton
+                            aria-label="toggle password visibility"
+                            onClick={handleClickShowPassword}
+                            onMouseDown={handleMouseDownPassword}
+                        >
+                          {state.showPassword ? <Visibility/> : <VisibilityOff/>}
+                        </IconButton>
+                      </InputAdornment>
+                    }
+                    error={Boolean(errors?.errorPassword)}
+                />
+                <FormHelperText
+                    style={{color: errors?.errorPassword !== "" ? "red" : "gray"}}
+                    id="component-error-text"
+                >
+                  {errors?.errorPassword}
+                </FormHelperText>
+              </FormControl>
+              <Box style={{minHeight: "4vh"}} margin="normal">
+                {state.message && (
+                    <div className="wrong-input">{state.message}</div>
+                )}
+              </Box>
+              <Button
+                  variant="contained"
+                  type="submit"
+                  color="primary"
+                  size="large"
+                  style={{minHeight: "50px"}}
+                  disabled={Boolean(errors?.errorEmail || errors?.errorPassword)}
+                  fullWidth
+              >
+                <span className="btn-login-txt">Zaloguj się</span>
+              </Button>
+              <Box style={{display: "flex", justifyContent: "space-evenly", marginTop:"5px"}}>
+                <Button style={{width: "47%"}} variant="outlined"
+                        onClick={() => window.location.assign("http://localhost:9000/authenticate/github")}> Zaloguj się
+                  z Githubem</Button>
+                <Button style={{width: "47%"}} variant="outlined"
+                        onClick={() => window.location.assign("http://localhost:9000/authenticate/gitlab")}> Zaloguj się
+                  z Gitlabem</Button>
+              </Box>
+            </Grid>
+          </Form>
+        </div>
+        <footer>
+          <Typography className="copyR">StudenckieUbranka &copy; 2021</Typography>
+        </footer>
       </div>
-      <footer>
-        <Typography className="copyR">StudenckieUbranka &copy; 2021</Typography>
-      </footer>
-    </div>
   );
 }

@@ -8,6 +8,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import AuthService from "./../../services/auth";
 import { CartNavButton } from "../../components/purchase/cart/CartNavButton";
 import { LogInProviderContext } from "../../state/LogInProvider";
+import {useHistory} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,13 +23,18 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const NavMenu = () => {
+
+  const history = useHistory();
   const classes = useStyles();
   const [log, setLog] = useContext(LogInProviderContext); // eslint-disable-line
 
-  const logOutHandle = () => {
-    AuthService.logout();
-    setLog(false);
-    window.location = "/";
+  const logout = () => {
+    let allCookies = document.cookie.split(";");
+    for (let cookie of allCookies)
+      document.cookie = cookie + "=;expires=" + new Date(0).toUTCString();
+    history.push("/product" +
+        "");
+    history.go(0);
   };
 
   return (
@@ -68,7 +74,7 @@ const NavMenu = () => {
 
           {AuthService.getUser() ? (
             <Link to="/">
-              <Button variant="outline-light" onClick={logOutHandle}>
+              <Button variant="outline-light" onClick={logout}>
                 Wyloguj Się
               </Button>
             </Link>

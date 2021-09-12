@@ -3,27 +3,23 @@ import client from "./client";
 class AuthService {
   async signIn(email, password) {
     return client
-      .post("user/login", {
-        email: email,
-        password: password,
-      })
-      .then((response) => {
-        if (response.data.authorization) {
-          localStorage.setItem("user", JSON.stringify(response.data));
-        }
-      });
+        .post("user/login", {
+          email: email,
+          password: password,
+        })
+        .then((response) => {
+          if (response.data.authorization) {
+            localStorage.setItem("user", JSON.stringify(response.data));
+          }
+        });
   }
 
   getUser() {
-    return JSON.parse(localStorage.getItem("user"));
+    return document.cookie.match("(^|;)\\s*" + "email" + "\\s*=\\s*([^;]+)");
   }
 
   getUserInfo(email) {
     return client.get(`user/info/${email}`);
-  }
-
-  logout() {
-    localStorage.removeItem("user");
   }
 
   signUp(values) {
