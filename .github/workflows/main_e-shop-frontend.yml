@@ -27,7 +27,7 @@ jobs:
     - name: npm install, build, and test
       run: |
         npm install
-        REACT_APP_BASE_API_URL="https://e-shop-back.azurewebsites.net" REACT_APP_OAUTH_URL="https://e-shop-back.azurewebsites.net" npm run build --if-present
+        REACT_APP_BASE_API_URL="https://e-shop-backend.azurewebsites.net" REACT_APP_OAUTH_URL="https://e-shop-backend.azurewebsites.net" npm run build --if-present
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v2
       with:
@@ -51,7 +51,7 @@ jobs:
       id: deploy-to-webapp
       uses: azure/webapps-deploy@v2
       with:
-        app-name: 'e-shop-front'
+        app-name: 'e-shop-frontend'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_4e4b1af7d2a1415db682a339d78f7126 }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_53A3CD35336B47FC897DF07AAECBD408 }}
         package: .
