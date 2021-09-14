@@ -8,7 +8,9 @@ on:
     branches:
       - main
   workflow_dispatch:
-
+env:
+  CI: false
+  
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -24,14 +26,13 @@ jobs:
     - name: npm install, build, and test
       run: |
         npm install
-        npm run build --if-present
-        npm run test --if-present
+        REACT_APP_BASE_API_URL="https://e-shop-backend.azurewebsites.net/api/v1" REACT_APP_OAUTH_URL="https://e-shop-backend.azurewebsites.net" npm run build --if-present
 
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v2
       with:
         name: node-app
-        path: .
+        path: build
 
   deploy:
     runs-on: ubuntu-latest
