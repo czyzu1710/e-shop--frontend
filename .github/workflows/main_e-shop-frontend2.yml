@@ -54,4 +54,4 @@ jobs:
         app-name: 'e-shop-frontend2'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_9f17d86d100244dfa8553987e43398f0 }}
-        package: .
+        package: ./build
