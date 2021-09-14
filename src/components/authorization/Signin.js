@@ -203,10 +203,10 @@ export default function Signin() {
               </Button>
               <Box style={{display: "flex", justifyContent: "space-evenly", marginTop:"5px"}}>
                 <Button style={{width: "47%"}} variant="outlined"
-                        onClick={() => window.location.assign("http://localhost:9000/authenticate/github")}> Zaloguj się
+                        onClick={() => window.location.assign(`${process.env.REACT_APP_OAUTH_URL}/authenticate/github`)}> Zaloguj się
                   z Githubem</Button>
                 <Button style={{width: "47%"}} variant="outlined"
-                        onClick={() => window.location.assign("http://localhost:9000/authenticate/gitlab")}> Zaloguj się
+                        onClick={() => window.location.assign(`${process.env.REACT_APP_OAUTH_URL}/authenticate/gitlab`)}> Zaloguj się
                   z Gitlabem</Button>
               </Box>
             </Grid>
