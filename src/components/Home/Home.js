@@ -6,10 +6,32 @@ import trousers from "../../images/trousers.jpg";
 import tshirt from "../../images/tshirt.jpg";
 import AuthService from "../../services/auth";
 import AdminWelcome from "../admin/AdminWelcome";
+import {useLocation} from "react-router-dom";
 
 const Home = () => {
   const [menuElements, setMenuElements] = useState({});
   const [sex, setSex] = useState({});
+  const location = useLocation()
+  useEffect(() => {
+
+    const query = new URLSearchParams(location.search);
+    console.log(query)
+    const paramEmail = query.get("email");
+    const paramAuth = query.get("authenticator");
+    if (paramEmail) {
+      document.cookie = `email=${paramEmail}; path=/`;
+      document.cookie = `oAuth=true; path=/`;
+      if (paramAuth != null) {
+        document.cookie = `authenticator=${decodeURIComponent(
+            paramAuth
+        ).replaceAll(" ", "+")}; path=/`;
+      }
+      window.location.href = "/product";
+    }
+
+    console.log(paramAuth)
+    console.log(paramEmail)
+  }, []);
 
   useEffect(() => {
     setSex({
