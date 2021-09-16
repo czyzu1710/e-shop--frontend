@@ -9,6 +9,7 @@ export const ProductsPage = () => {
   useEffect(() => {
 
     const query = new URLSearchParams(location.search);
+    console.log(query)
     const paramEmail = query.get("email");
     const paramAuth = query.get("authenticator");
     if (paramEmail) {
